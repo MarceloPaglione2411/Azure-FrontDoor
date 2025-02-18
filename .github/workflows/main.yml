@@ -23,6 +23,16 @@ jobs:
         with:
           terraform_version: 1.5.0
 
+name: Run Azure Login with OIDC
+on: [push]
+
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:          
       - name: Azure login
         uses: azure/login@v2
         with:
