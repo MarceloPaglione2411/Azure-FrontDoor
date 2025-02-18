@@ -3,20 +3,22 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:  
+
 jobs:
   terraform:
-    name: 'Terraform'
+    name: Terraform
     runs-on: ubuntu-latest
     environment: production
     
     defaults:
       run:
         shell: bash
+        
     steps:      
     - name: Obtendo o código
       uses: actions/checkout@v4.1.5
 
-    - name: 'Setup terraform'
+    - name: Setup terraform
       uses: hashicorp/setup-terraform@v3
       with:
         terraform_version: "4.7.0"
