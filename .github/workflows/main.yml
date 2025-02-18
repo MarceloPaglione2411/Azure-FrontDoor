@@ -20,8 +20,8 @@ jobs:
 
     - name: Setup terraform
       uses: hashicorp/setup-terraform@v3
-      with:
-        terraform_version: "2.85.0"
+      #with:
+      #  terraform_version: "2.85.0"
 
     - name: Azure Login
       uses: azure/login@v2
