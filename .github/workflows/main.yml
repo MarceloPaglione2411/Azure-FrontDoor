@@ -15,15 +15,15 @@ jobs:
         shell: bash
         
     steps:      
-    - name: Obtendo o código
-      uses: actions/checkout@v3
+      - name: Obtendo o código
+        uses: actions/checkout@v3
 
-    - name: Setup terraform
-      uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_version: 1.5.0
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
 
-     - name: Azure login
+      - name: Azure login
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
@@ -37,14 +37,14 @@ jobs:
           inlineScript: |
             az account show
 
-    - name: Terraform Init
-      run: terraform init
+      - name: Terraform Init
+        run: terraform init
 
-    - name: Terraform Plan
-      run: terraform plan -var-file dev.tfvars
+      - name: Terraform Plan
+        run: terraform plan -var-file dev.tfvars
 
-    - name: Terraform Apply
-      run: terraform apply -var-file dev.tfvars
+      - name: Terraform Apply
+        run: terraform apply -var-file dev.tfvars
       
 
             
