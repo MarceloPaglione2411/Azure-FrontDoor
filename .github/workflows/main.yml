@@ -4,26 +4,27 @@ on:
     branches: ["main"]
   workflow_dispatch:  
 jobs:
-  Terraform:
-  name: 'Terraform'
-  runs-on: ubuntu-latest
-  environment: production
-  defaults:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    environment: production
+    
+    defaults:
       run:
         shell: bash
-  steps:      
-     - name: Obtendo o código
-       uses: actions/checkout@v4.1.5
+    steps:      
+    - name: Obtendo o código
+      uses: actions/checkout@v4.1.5
 
-     - name: 'Setup terraform'
-       uses: hashicorp/setup-terraform@v3
-       with:
-         terraform_version: "4.7.0"
+    - name: 'Setup terraform'
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "4.7.0"
 
-     - name: Azure Login
-       uses: azure/login@v2
-       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }} 
+    - name: Azure Login
+      uses: azure/login@v2
+      with:
+       creds: ${{ secrets.AZURE_CREDENTIALS }} 
 
      #- name: Azure CLI script
      #   uses: azure/cli@v2
